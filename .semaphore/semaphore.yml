@@ -11,8 +11,8 @@ blocks:
         - name: 'Job #1'
           commands:
             - 'echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin'
-            - 'docker pull $DOCKER_USERNAME/django-markdown-editor:latest || true'
-            - 'docker build --cache-from=$DOCKER_USERNAME/django-markdown-editor:latest -t $DOCKER_USERNAME/django-markdown-editor:latest .'
+            - docker pull $DOCKER_USERNAME/django-markdown-editor || true
+            - docker build --cache-from=$DOCKER_USERNAME/django-markdown-editor -t $DOCKER_USERNAME/django-markdown-editor .
             - 'docker push $DOCKER_USERNAME/django-markdown-editor:latest'
       secrets:
         - name: dockerhub
